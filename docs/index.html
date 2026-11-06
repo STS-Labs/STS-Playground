@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An Ode to Nikusha</title>
+<meta name="description" content="A poem by Zuka for Nikusha: committed, signed and merged with love.">
+<meta name="theme-color" content="#fff7ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#18121d" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="An Ode to Nikusha">
+<meta property="og:description" content="A poem by Zuka, committed with love.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e64980' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --paper:#fff7ee; --ink:#2a2130; --muted:#776a76; --card:#fffdfb; --line:#f0e1d3;
+  --zuka:#f25c46; --zuka-ink:#c13a25; --zuka-soft:#ffe4dd;
+  --niku:#12a893; --niku-ink:#0a7a6b; --niku-soft:#d5f4ee;
+  --love:#e64980; --love-ink:#c2255c; --love-soft:#ffe1ec;
+  --grape:#8b5cf6;
+  --ok:#15803d; --ok-soft:#dcfce7; --bad:#c62828; --bad-soft:#fde2e2; --run:#a16207; --run-soft:#fef3c7;
+  --term:#241b2c; --term-ink:#f4e9f1; --term-dim:#a596a6;
+  --dot:rgba(42,33,48,.075);
+  --shadow:0 1px 0 rgba(42,33,48,.04),0 14px 34px -16px rgba(140,70,50,.28);
+  --gutter:64px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#18121d; --ink:#f6ecf3; --muted:#b2a1af; --card:#221a29; --line:#3a2e43;
+    --zuka:#ff7a63; --zuka-ink:#ff9a87; --zuka-soft:rgba(255,122,99,.15);
+    --niku:#2dd4bf; --niku-ink:#5eead4; --niku-soft:rgba(45,212,191,.14);
+    --love:#f472b6; --love-ink:#f9a8d4; --love-soft:rgba(244,114,182,.15);
+    --grape:#a78bfa;
+    --ok:#4ade80; --ok-soft:rgba(74,222,128,.13); --bad:#f87171; --bad-soft:rgba(248,113,113,.14); --run:#fbbf24; --run-soft:rgba(251,191,36,.13);
+    --term:#0f0b13; --term-ink:#f4e9f1; --term-dim:#8d7f8e;
+    --dot:rgba(255,255,255,.05);
+    --shadow:0 1px 0 rgba(0,0,0,.3),0 18px 40px -18px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Fraunces",Georgia,"Times New Roman",serif;font-optical-sizing:auto;
+  background-image:radial-gradient(var(--dot) 1.2px,transparent 1.5px);background-size:22px 22px;
+  overflow-x:hidden;-webkit-tap-highlight-color:transparent;
+}
+body.raw-open{overflow:hidden}
+::selection{background:var(--love-soft)}
+.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.82em;background:var(--love-soft);color:var(--love-ink);padding:.08em .35em;border-radius:6px}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:72px 0 120px}
+.prompt{font:500 14px/1.4 "JetBrains Mono",ui-monospace,monospace;color:var(--muted);margin:0 0 28px;min-height:1.4em}
+.prompt .ps{color:var(--niku-ink)}
+.caret{display:inline-block;width:.6em;height:1.15em;vertical-align:-.22em;background:var(--love);margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.title{margin:0;font-weight:800;line-height:.95;letter-spacing:-.025em;font-size:clamp(46px,11vw,112px);font-variation-settings:"opsz" 144}
+.title .pre{display:block;font-weight:300;font-style:italic;font-size:.4em;letter-spacing:0;color:var(--muted);margin-bottom:.18em}
+.title .name{position:relative;display:inline-block;font-weight:inherit;color:var(--niku-ink)}
+/* fixed aspect ratio = uniform scaling, so pathLength-based dashes stay exact
+   (non-scaling-stroke would put dashes in screen units and under-draw the line) */
+.scribble{position:absolute;left:-3%;width:106%;height:auto;aspect-ratio:300/20;bottom:-.16em;overflow:visible;pointer-events:none}
+.scribble path{fill:none;stroke:var(--love);stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s .9s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.byline{display:inline-block;margin:26px 0 0;font:700 clamp(30px,5vw,42px)/1 "Caveat",cursive;color:var(--zuka-ink);transform:rotate(-3deg);transform-origin:left}
+.byline svg{width:.7em;height:.7em;fill:var(--love);vertical-align:-.04em;margin-left:.15em}
+.hint{margin:40px 0 0;font:400 13.5px/1.6 "JetBrains Mono",ui-monospace,monospace;color:var(--muted);max-width:42ch}
+.hint b{color:var(--love-ink);font-weight:600}
+.cue{position:absolute;left:0;bottom:36px;font:500 13px "JetBrains Mono",monospace;color:var(--muted);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.cue span{display:inline-block;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(5px)}}
+.floaty{position:absolute;pointer-events:none;opacity:.2;animation:float 7s ease-in-out infinite}
+.floaty svg{width:100%;height:100%;fill:currentColor;display:block}
+@keyframes float{50%{transform:translateY(-18px) rotate(9deg)}}
+
+/* ---------- log ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;margin:0 0 22px;font:500 12.5px "JetBrains Mono",monospace;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:-1px}
+.ldot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--zuka)}
+.ldot.niku{background:var(--niku)}
+.log{position:relative;padding:0 0 48px var(--gutter)}
+.graph{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.lane{stroke-width:4;stroke-linecap:round}
+.lane.zuka,.mcurve.zuka{stroke:var(--zuka)}
+.lane.niku,.mcurve.niku{stroke:var(--niku)}
+.mcurve{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .9s cubic-bezier(.6,0,.2,1)}
+.trunk{fill:none;stroke:url(#trunk-grad);stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s .9s ease}
+.merged .mcurve,.merged .trunk{stroke-dashoffset:0}
+.node{fill:var(--card);stroke-width:4;transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .45s cubic-bezier(.3,1.7,.5,1)}
+.node.zuka{stroke:var(--zuka)} .node.niku{stroke:var(--niku)}
+.node.on{transform:scale(1)}
+.tip{opacity:0;transition:opacity .3s}
+.tip.zuka{fill:var(--zuka)} .tip.niku{fill:var(--niku)}
+.tip.on{opacity:1;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.ghost{fill:none;stroke:var(--muted);stroke-width:2;stroke-dasharray:3 4;opacity:.6}
+.mnode{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .6s .85s cubic-bezier(.3,1.8,.5,1)}
+.mnode circle{fill:var(--love);stroke:var(--paper);stroke-width:4}
+.mnode use{fill:#fff}
+.merged .tip,.merged .ghost{display:none}
+.merged .mnode{transform:scale(1)}
+
+.commit{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:22px 26px 24px;margin:0 0 46px;box-shadow:var(--shadow);transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.commit:last-child{margin-bottom:0}
+@media (hover:hover){
+  .commit:hover{transform:translateY(-3px) rotate(-.35deg)}
+  .commit:nth-of-type(even):hover{transform:translateY(-3px) rotate(.35deg)}
+}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font:500 12.5px/1 "JetBrains Mono",ui-monospace,monospace;color:var(--muted)}
+.hash{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:600;padding:6px 9px;border-radius:8px;background:var(--zuka-soft);color:var(--zuka-ink);min-width:7.4ch;transition:transform .2s}
+.hash:hover{transform:rotate(-3deg) scale(1.05)}
+.hash.decoded{font-style:italic}
+[data-lane=niku] .hash{background:var(--niku-soft);color:var(--niku-ink)}
+[data-lane=merge] .hash{background:var(--love-soft);color:var(--love-ink)}
+.author{display:inline-flex;align-items:center;gap:6px}
+.stat{margin-left:auto;white-space:nowrap}
+.stat .plus{color:var(--ok)}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:600;border:1.5px solid currentColor}
+.pill.verified{color:var(--ok)}
+.pill.open{color:var(--run)}
+.pill.done{color:var(--grape);display:none}
+.merged .pill.open{display:none}
+.merged .pill.done{display:inline-flex}
+.msg{font:600 clamp(14.5px,2.4vw,16.5px)/1.4 "JetBrains Mono",ui-monospace,monospace;margin:14px 0 16px;letter-spacing:-.01em;overflow-wrap:anywhere}
+.msg .type{color:var(--love-ink)}
+.stanza{margin:0;font-size:clamp(19px,3.1vw,24px);line-height:1.55;font-weight:400;font-variation-settings:"opsz" 36}
+.line{display:block;padding-left:1em;text-indent:-1em}
+.js .commit .line{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i) * 130ms + 120ms)}
+.js .commit.in .line{opacity:1;transform:none}
+.name{cursor:pointer;font-weight:650;color:var(--niku-ink);border-radius:6px;padding:0 .08em;transition:background .2s}
+.name.zuka{color:var(--zuka-ink)}
+.stanza .name:hover{background:var(--niku-soft)}
+.stanza .name.zuka:hover{background:var(--zuka-soft)}
+.note{display:inline-block;font:700 23px/1.1 "Caveat",cursive;color:var(--love-ink);transform:rotate(-2.5deg)}
+.note-row{text-align:right;margin-top:8px}
+
+/* widgets */
+.widget{margin-top:22px;padding-top:18px;border-top:1.5px dashed var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.btn{appearance:none;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:600 14px/1 "JetBrains Mono",ui-monospace,monospace;padding:12px 16px;border-radius:12px;cursor:pointer;box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn:disabled{opacity:.6;cursor:progress;transform:none;box-shadow:3px 3px 0 var(--ink)}
+.btn.primary{background:var(--love);color:#fff}
+.btn svg{width:15px;height:15px;fill:currentColor}
+.btn.glow{animation:glow 1.3s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:3px 3px 0 var(--ink),0 0 0 7px var(--love-soft)}}
+.btn:focus-visible,.name:focus-visible,.hash:focus-visible,.cue:focus-visible,.counter:focus-visible{outline:3px solid var(--love);outline-offset:3px}
+
+.badge{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;font:600 13px/1 "JetBrains Mono",monospace;background:var(--line);color:var(--muted)}
+.badge.run{background:var(--run-soft);color:var(--run)}
+.badge.bad{background:var(--bad-soft);color:var(--bad);animation:shake .45s}
+.badge.ok{background:var(--ok-soft);color:var(--ok);animation:popin .45s cubic-bezier(.3,1.7,.5,1)}
+.spin{width:12px;height:12px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+@keyframes popin{0%{transform:scale(.8)}100%{transform:none}}
+.ci-detail{flex-basis:100%;margin:0;font:400 13px/1.5 "JetBrains Mono",monospace;color:var(--muted);min-height:1.5em}
+
+.switch{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font:600 14px "JetBrains Mono",monospace;user-select:none}
+.switch input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.track{width:50px;height:30px;flex:none;border-radius:999px;background:var(--line);border:2px solid var(--ink);position:relative;transition:background .2s}
+.knob{position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:var(--card);border:2px solid var(--ink);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.switch input:checked + .track{background:var(--niku)}
+.switch input:checked + .track .knob{transform:translateX(20px)}
+.switch input:focus-visible + .track{outline:3px solid var(--love);outline-offset:3px}
+
+.term{flex-basis:100%;background:var(--term);color:var(--term-ink);border-radius:14px;overflow:hidden;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.term-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:rgba(255,255,255,.07);font:500 11.5px "JetBrains Mono",monospace;color:var(--term-dim)}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:#ff5f57}
+.term-bar i:nth-child(2){background:#febc2e}
+.term-bar i:nth-child(3){background:#28c840}
+.term-bar span{margin-left:8px}
+.term-body{margin:0;padding:14px 14px 16px;font:400 12.5px/1.65 "JetBrains Mono",ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;min-height:140px;max-height:270px;overflow:auto}
+.term-body .ps{color:#5eead4}
+.term-body .err{color:#fca5a5}
+.term-body .hint{color:#fcd34d}
+.term-body .ok{color:#86efac}
+.term-body .dim{color:var(--term-dim)}
+.tcur{display:inline-block;width:.55em;height:1.1em;vertical-align:-.22em;background:var(--term-ink);animation:blink 1s steps(1) infinite}
+
+.commit[data-lane=merge]{border-style:dashed;border-width:2px}
+.merged .commit[data-lane=merge]{border-style:solid;border-color:transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(120deg,var(--zuka),var(--love),var(--grape),var(--niku)) border-box}
+
+/* ---------- finale + footer ---------- */
+.finale{text-align:center;padding:36px 0 8px}
+.finale[hidden]{display:none}
+.finale.show{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+.finale-heart svg{width:84px;height:84px;fill:var(--love);animation:beat 1.3s ease-in-out infinite;display:inline-block}
+.finale-big{font-weight:800;font-size:clamp(44px,10vw,88px);line-height:1;margin:14px 0 6px;letter-spacing:-.025em;font-variation-settings:"opsz" 144}
+.finale-big span{display:block;font-weight:300;font-style:italic;font-size:.4em;letter-spacing:0;color:var(--muted);margin-top:.4em}
+.finale .btn{margin-top:22px}
+footer{padding:48px 0 130px;text-align:center;color:var(--muted)}
+.trailers{display:inline-block;text-align:left;font:500 13px/1.75 "JetBrains Mono",monospace;margin:0}
+.trailers b{color:var(--ink);font-weight:600}
+.psst{font:700 23px/1.3 "Caveat",cursive;margin:22px 0 0}
+kbd{font:600 12px "JetBrains Mono",monospace;border:1.5px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:2px 6px;background:var(--card);color:var(--ink)}
+
+/* ---------- counter + toast ---------- */
+.counter{position:fixed;right:16px;bottom:16px;z-index:40;display:inline-flex;align-items:center;gap:8px;padding:10px 15px 10px 12px;border-radius:999px;background:var(--card);color:var(--ink);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font:600 14px/1 "JetBrains Mono",monospace;cursor:pointer}
+.counter svg{width:18px;height:18px;fill:var(--love)}
+.counter.bump svg{animation:beat .4s}
+@keyframes beat{30%{transform:scale(1.4)}60%{transform:scale(.92)}}
+.counter .lbl{color:var(--muted);font-weight:400}
+.toast{position:fixed;right:16px;bottom:74px;z-index:41;max-width:min(320px,calc(100vw - 32px));background:var(--ink);color:var(--paper);font:500 13px/1.45 "JetBrains Mono",monospace;padding:10px 14px;border-radius:12px;opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s;pointer-events:none}
+.toast.show{opacity:1;transform:none}
+
+/* ---------- hearts fx ---------- */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.p{position:absolute;width:18px;height:18px;transform:translate(-50%,-50%);will-change:transform,opacity;animation-fill-mode:forwards}
+.p svg{width:100%;height:100%;fill:currentColor;display:block}
+.p.pop{animation-name:pop}
+.p.fall{animation-name:fall;animation-timing-function:linear}
+.p.fade{animation-name:fade}
+@keyframes pop{
+  0%{transform:translate(-50%,-50%) scale(.3) rotate(0);opacity:1;animation-timing-function:cubic-bezier(.15,.8,.3,1)}
+  55%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(var(--s)) rotate(calc(var(--r) * .6));opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,.5)}
+  100%{transform:translate(calc(-50% + var(--dx) * 1.1),calc(-50% + var(--dy) + 70px)) scale(calc(var(--s) * .7)) rotate(var(--r));opacity:0}
+}
+@keyframes fall{
+  0%{transform:translate(-50%,0) rotate(0) scale(var(--s));opacity:0}
+  8%{opacity:.95}
+  50%{transform:translate(calc(-50% + var(--sway)),calc(var(--fy) * .5)) rotate(calc(var(--r) * .5)) scale(var(--s))}
+  100%{transform:translate(-50%,var(--fy)) rotate(var(--r)) scale(var(--s));opacity:.85}
+}
+@keyframes fade{0%{opacity:0;transform:translate(-50%,-50%) scale(var(--s))}30%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(var(--s))}}
+
+/* ---------- raw .txt view ---------- */
+.raw{position:fixed;inset:0;z-index:100;background:#fff;color:#000;overflow:auto;color-scheme:light}
+.raw[hidden]{display:none}
+.raw-bar{position:sticky;top:0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:8px 12px;background:#f1f1f1;border-bottom:1px solid #cfcfcf;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#555}
+.raw pre{margin:10px 8px;font:13px/1.45 ui-monospace,Menlo,Consolas,"Courier New",monospace;white-space:pre-wrap}
+.raw-close{appearance:none;border:0;cursor:pointer;padding:9px 16px;border-radius:999px;color:#fff;font:italic 600 15px "Fraunces",Georgia,serif;background:linear-gradient(120deg,#f25c46,#e64980,#8b5cf6);box-shadow:0 6px 18px -6px rgba(230,73,128,.6)}
+.raw-close:focus-visible{outline:3px solid #8b5cf6;outline-offset:3px}
+
+/* ---------- small screens ---------- */
+@media (max-width:560px){
+  :root{--gutter:38px}
+  .wrap{padding:0 16px}
+  .prompt{font-size:12.5px}
+  .commit{padding:18px 18px 20px;border-radius:16px}
+  .stat{margin-left:0}
+  .counter .lbl{display:none}
+  .note{font-size:21px}
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *:not(.p),*:not(.p)::before,*:not(.p)::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="floaty" aria-hidden="true" style="top:14%;right:6%;width:54px;height:54px;color:var(--love)"><svg><use href="#heart"/></svg></span>
+    <span class="floaty" aria-hidden="true" style="top:30%;right:22%;width:26px;height:26px;color:var(--niku);animation-delay:-2s"><svg><use href="#heart"/></svg></span>
+    <span class="floaty" aria-hidden="true" style="top:62%;right:10%;width:38px;height:38px;color:var(--zuka);animation-delay:-4s"><svg><use href="#heart"/></svg></span>
+    <span class="floaty" aria-hidden="true" style="top:76%;right:30%;width:20px;height:20px;color:var(--grape);animation-delay:-1s"><svg><use href="#heart"/></svg></span>
+
+    <p class="prompt" aria-hidden="true"><span class="ps">~/sts-playground $</span> <span id="typed">git log --graph --love</span><span class="caret"></span></p>
+    <h1 class="title">
+      <span class="pre">An Ode to</span>
+      <span class="name niku" data-who="niku" role="button" tabindex="0">Nikusha<svg class="scribble" viewBox="0 0 300 20" aria-hidden="true"><path pathLength="1" d="M4 13 C 60 4, 110 19, 170 10 S 270 5, 296 12"/></svg></span>
+    </h1>
+    <p class="byline">by <span class="name zuka" data-who="zuka" role="button" tabindex="0">Zuka</span><svg aria-hidden="true"><use href="#heart"/></svg></p>
+    <p class="hint">scroll to read the log.<br>click <b>anywhere</b> to commit a little love.</p>
+    <a class="cue" href="#log"><span aria-hidden="true">↓</span> read the log</a>
+  </header>
+
+  <div class="legend">
+    <span>branches:</span>
+    <span><i style="background:var(--zuka)"></i>zuka</span>
+    <span><i style="background:var(--niku)"></i>nikusha</span>
+  </div>
+
+  <main class="log" id="log">
+    <svg class="graph" id="graph" aria-hidden="true"></svg>
+
+    <article class="commit" data-lane="zuka" aria-label="Stanza 1">
+      <div class="meta">
+        <button class="hash" type="button" data-word="besties" aria-label="commit be571e5, tap to decode">be571e5</button>
+        <span class="author"><i class="ldot"></i>Zuka</span>
+        <span class="stat"><span class="plus">+4 lines</span>, 0 regrets</span>
+      </div>
+      <h2 class="msg"><span class="type">feat:</span> you’re one of mine</h2>
+      <p class="stanza">
+        <span class="line" style="--i:0">Of all the files inside this repo,</span>
+        <span class="line" style="--i:1">of every branch and every line,</span>
+        <span class="line" style="--i:2">there’s one thing that I’ll always know:</span>
+        <span class="line" style="--i:3"><span class="name niku" data-who="niku" role="button" tabindex="0">Nikusha</span>, friend, you’re one of mine.</span>
+      </p>
+      <div class="note-row"><span class="note">psst, the names are clickable ↑</span></div>
+    </article>
+
+    <article class="commit" data-lane="niku" aria-label="Stanza 2">
+      <div class="meta">
+        <button class="hash" type="button" data-word="bad idea" aria-label="commit bad1dea, tap to decode">bad1dea</button>
+        <span class="author"><i class="ldot niku"></i>Nikusha</span>
+        <span class="stat"><span class="plus">+4 lines</span>, −∞ bugs</span>
+      </div>
+      <h2 class="msg"><span class="type">fix:</span> everything Zuka broke (again)</h2>
+      <p class="stanza">
+        <span class="line" style="--i:0">You write the code, I break the build,</span>
+        <span class="line" style="--i:1">you fix the bugs I leave behind,</span>
+        <span class="line" style="--i:2">with every merge my heart is filled —</span>
+        <span class="line" style="--i:3">a better pal I’ll never find.</span>
+      </p>
+      <div class="widget">
+        <button class="btn" type="button" id="build-btn"><span aria-hidden="true">▶</span> run the build</button>
+        <span class="badge" id="badge" role="status">build: idle</span>
+        <span class="note">go on. break it.</span>
+        <p class="ci-detail" id="ci-detail" aria-live="polite"></p>
+      </div>
+    </article>
+
+    <article class="commit" data-lane="zuka" aria-label="Stanza 3">
+      <div class="meta">
+        <button class="hash" type="button" data-word="oddball" aria-label="commit 0ddba11, tap to decode">0ddba11</button>
+        <span class="author"><i class="ldot"></i>Zuka</span>
+        <span class="stat"><span class="plus">+4 lines</span>, 1 strong opinion</span>
+      </div>
+      <h2 class="msg"><span class="type">style:</span> tolerate your .txt formatting</h2>
+      <p class="stanza">
+        <span class="line" style="--i:0">Though your <code>.txt</code> was not my style</span>
+        <span class="line" style="--i:1">(I’ll say it plainly, no pretend),</span>
+        <span class="line" style="--i:2">it’s worth the diff, it’s worth the while,</span>
+        <span class="line" style="--i:3">to have you as my closest friend.</span>
+      </p>
+      <div class="widget">
+        <label class="switch"><input type="checkbox" id="txt-toggle"><span class="track"><span class="knob"></span></span>view as <code>.txt</code></label>
+        <span class="note">(Nikusha’s favourite format)</span>
+      </div>
+    </article>
+
+    <article class="commit" data-lane="merge" aria-label="Stanza 4">
+      <div class="meta">
+        <button class="hash" type="button" data-word="dedicat(ed)" aria-label="commit ded1ca7, tap to decode">ded1ca7</button>
+        <span class="author"><i class="ldot"></i><i class="ldot niku"></i>Zuka &amp; Nikusha</span>
+        <span class="pill verified" title="Signed with Zuka’s whole heart">✓ Verified</span>
+        <span class="pill open">● open</span>
+        <span class="pill done">✓ merged</span>
+      </div>
+      <h2 class="msg"><span class="type">merge:</span> branch 'nikusha' into 'zuka'</h2>
+      <p class="stanza">
+        <span class="line" style="--i:0">So here’s my commit, signed and true,</span>
+        <span class="line" style="--i:1">pushed up to GitHub for all to see:</span>
+        <span class="line" style="--i:2">no branch could hold the love for you</span>
+        <span class="line" style="--i:3">that <span class="name zuka" data-who="zuka" role="button" tabindex="0">Zuka</span> has, <span class="name niku" data-who="niku" role="button" tabindex="0">Nikusha</span> — from me.</span>
+      </p>
+      <div class="widget">
+        <div class="term">
+          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>zsh: sts-playground</span></div>
+          <pre class="term-body" id="term" aria-live="polite"><span class="dim"># stanza 4, live in your terminal</span>
+</pre>
+        </div>
+        <button class="btn primary" type="button" id="push-btn">git push origin love</button>
+        <span class="note">this is the big one</span>
+      </div>
+    </article>
+  </main>
+
+  <section class="finale" id="finale" hidden aria-live="polite">
+    <div class="finale-heart" aria-hidden="true"><svg><use href="#heart"/></svg></div>
+    <p class="finale-big">Merged.<span>0 conflicts. Forever.</span></p>
+    <button class="btn" type="button" id="again"><span aria-hidden="true">↑</span> read it again</button>
+  </section>
+
+  <footer>
+    <pre class="trailers">Signed-off-by: <b>Zuka</b>
+<span id="review">Reviewed-by: <b>Nikusha</b> (pending… that’s you!)</span></pre>
+    <p class="psst">psst: type <kbd>n</kbd><kbd>i</kbd><kbd>k</kbd><kbd>u</kbd><kbd>s</kbd><kbd>h</kbd><kbd>a</kbd> on your keyboard</p>
+  </footer>
+</div>
+
+<button class="counter" id="counter" type="button" aria-label="Love commits counter"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#heart"/></svg><span id="count">0</span><span class="lbl">love commits</span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="fx" aria-hidden="true"></div>
+
+<div class="raw" id="raw" hidden role="dialog" aria-modal="true" aria-label="zuka-loves-nikusha.txt as plain text">
+  <div class="raw-bar">
+    <span>zuka-loves-nikusha.txt · text/plain · exactly how Nikusha likes it</span>
+    <button class="raw-close" type="button" id="raw-close">✨ give me my style back</button>
+  </div>
+  <pre id="raw-pre"></pre>
+</div>
+
+<!-- Verbatim copy of zuka-loves-nikusha.txt, used by the ".txt" view. -->
+<script type="text/plain" id="poem-src">
+An Ode to Nikusha
+by Zuka
+
+Of all the files inside this repo,
+of every branch and every line,
+there's one thing that I'll always know:
+Nikusha, friend, you're one of mine.
+
+You write the code, I break the build,
+you fix the bugs I leave behind,
+with every merge my heart is filled —
+a better pal I'll never find.
+
+Though your .txt was not my style
+(I'll say it plainly, no pretend),
+it's worth the diff, it's worth the while,
+to have you as my closest friend.
+
+So here's my commit, signed and true,
+pushed up to GitHub for all to see:
+no branch could hold the love for you
+that Zuka has, Nikusha — from me.
+</script>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wait = ms => new Promise(res => setTimeout(res, reduce ? Math.min(ms, 200) : ms));
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const rootStyle = getComputedStyle(document.documentElement); // live: follows theme changes
+  const v = n => rootStyle.getPropertyValue(n).trim();
+  const palettes = {
+    zuka: () => [v('--zuka'), v('--love'), v('--zuka')],
+    niku: () => [v('--niku'), v('--grape'), v('--niku')],
+    all:  () => [v('--zuka'), v('--niku'), v('--love'), v('--grape')],
+  };
+  const centerOf = el => { const r = el.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+  let rawOpen = false;
+
+  /* ---------- hearts ---------- */
+  const fx = $('#fx');
+  const proto = document.createElement('span');
+  proto.innerHTML = '<svg viewBox="0 0 24 24"><use href="#heart"/></svg>';
+  let live = 0;
+  function spawn(x, y, color, kind, vars, dur) {
+    if (live > 240) return; // keep it smooth on slow phones
+    const el = proto.cloneNode(true);
+    el.className = 'p ' + kind;
+    el.style.cssText = `left:${x}px;top:${y}px;color:${color};animation-duration:${Math.round(dur)}ms`;
+    for (const k in vars) el.style.setProperty('--' + k, vars[k]);
+    el.addEventListener('animationend', () => { el.remove(); live--; }, { once: true });
+    live++;
+    fx.appendChild(el);
+  }
+  function burst(x, y, colors, n = 9, power = 1) {
+    if (rawOpen) return; // no hearts in plain-text land
+    for (let i = 0; i < n; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const d = (36 + Math.random() * 64) * power;
+      spawn(x, y, pick(colors), reduce ? 'fade' : 'pop', {
+        dx: (Math.cos(a) * d).toFixed(1) + 'px',
+        dy: (Math.sin(a) * d - 28 * power).toFixed(1) + 'px',
+        r: (Math.random() * 90 - 45).toFixed(0) + 'deg',
+        s: (0.55 + Math.random() * 0.9).toFixed(2),
+      }, 850 + Math.random() * 650);
+    }
+  }
+  function rain(colors, n = 80) {
+    if (rawOpen) return;
+    for (let i = 0; i < n; i++) {
+      setTimeout(() => spawn(
+        Math.random() * innerWidth, reduce ? Math.random() * innerHeight : -24, pick(colors), reduce ? 'fade' : 'fall', {
+          sway: (Math.random() * 140 - 70).toFixed(0) + 'px',
+          r: (Math.random() * 540 - 270).toFixed(0) + 'deg',
+          s: (0.7 + Math.random() * 1.4).toFixed(2),
+          fy: (innerHeight + 60) + 'px',
+        }, 2400 + Math.random() * 2400), Math.random() * 1800);
+    }
+  }
+
+  /* ---------- love counter + toast ---------- */
+  const counter = $('#counter'), countEl = $('#count'), toastEl = $('#toast');
+  let love = 0, infinite = false, toastTimer = 0;
+  const milestones = [
+    [10, 'ok wow, that’s a lot of love'],
+    [25, 'warning: love.size > branch.capacity'],
+    [50, 'Nikusha, are you seeing this?'],
+    [100, 'git gc can’t clean up this much love'],
+    [200, 'fine, it’s infinite. go merge it ↓'],
+  ];
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2800);
+  }
+  function addLove(n = 1) {
+    counter.classList.remove('bump'); void counter.offsetWidth; counter.classList.add('bump');
+    if (infinite) return;
+    const before = love;
+    love += n;
+    countEl.textContent = love;
+    for (const [m, msg] of milestones) if (before < m && love >= m) toast(msg);
+  }
+
+  /* every click commits a little love */
+  document.addEventListener('click', e => {
+    if (rawOpen) return;
+    const t = e.target instanceof Element ? e.target : null;
+    if (!t || t.matches('input')) return; // label clicks also fire on the input; count once
+    let x = e.clientX, y = e.clientY;
+    if (e.detail === 0) { // keyboard "click": no pointer position, so aim at the element
+      const r = (t.closest('button,[role=button],label') || t).getBoundingClientRect();
+      [x, y] = r.width ? [r.left + r.width / 2, r.top + r.height / 2] : [innerWidth / 2, innerHeight / 2];
+    }
+    const name = t.closest('.name');
+    if (name) { burst(x, y, palettes[name.dataset.who](), 18, 1.4); addLove(3); return; }
+    burst(x, y, palettes.all(), 8);
+    addLove(1);
+  });
+  $$('.name').forEach(n => n.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); n.click(); }
+  }));
+
+  /* commit hashes are secretly words */
+  $$('.hash').forEach(h => {
+    const code = h.textContent;
+    h.addEventListener('click', () => {
+      const on = h.classList.toggle('decoded');
+      h.textContent = on ? h.dataset.word : code;
+    });
+  });
+
+  /* ---------- hero typewriter ---------- */
+  const typed = $('#typed');
+  if (!reduce) {
+    const cmd = typed.textContent;
+    typed.textContent = '';
+    let i = 0;
+    setTimeout(function tick() {
+      typed.textContent = cmd.slice(0, ++i);
+      if (i < cmd.length) setTimeout(tick, 45 + Math.random() * 60);
+    }, 450);
+  }
+
+  /* ---------- reveal stanzas ---------- */
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  }), { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+  $$('.commit').forEach(c => io.observe(c));
+
+  /* ---------- git graph that draws as you scroll ---------- */
+  const log = $('#log'), svg = $('#graph'), commits = $$('.commit', log);
+  let G = null, merged = false, sig = '';
+  // Build the graph's elements once; layout() only moves them. Rebuilding would
+  // restart (or skip) the merge animation whenever a card changes height.
+  svg.innerHTML = `
+    <defs><linearGradient id="trunk-grad" gradientUnits="userSpaceOnUse" x1="0" x2="0">
+      <stop offset="0" style="stop-color:var(--love)"/><stop offset="1" style="stop-color:var(--grape)"/>
+    </linearGradient></defs>
+    <line class="lane zuka"/><line class="lane niku"/>
+    <path class="mcurve zuka" pathLength="1"/><path class="mcurve niku" pathLength="1"/>
+    <path class="trunk" pathLength="1"/>
+    ${commits.slice(0, -1).map(c => `<circle class="node ${c.dataset.lane}" r="7"/>`).join('')}
+    <circle class="tip zuka" r="4.5"/><circle class="tip niku" r="4.5"/>
+    <circle class="ghost" r="10"/>
+    <g class="mpos"><g class="mnode"><circle r="15"/><use href="#heart" x="-9.5" y="-9" width="19" height="19"/></g></g>`;
+  const q = s => svg.querySelector(s);
+  const el = {
+    grad: q('#trunk-grad'), lanes: $$('.lane', svg), cz: q('.mcurve.zuka'), cn: q('.mcurve.niku'),
+    trunk: q('.trunk'), nodes: $$('.node', svg), tips: $$('.tip', svg), ghost: q('.ghost'), mpos: q('.mpos'),
+  };
+  const set = (node, attrs) => { for (const k in attrs) node.setAttribute(k, attrs[k]); };
+  function layout() {
+    const W = parseFloat(getComputedStyle(log).paddingLeft) || 56;
+    const H = log.offsetHeight;
+    const ys = commits.map(c => c.offsetTop + 31);
+    const s = [W, H, ...ys].join();
+    if (s === sig) return; // nothing moved
+    sig = s;
+    const xZ = Math.round(W * 0.27), xN = Math.round(W * 0.66), xC = Math.round((xZ + xN) / 2);
+    const yM = ys[ys.length - 1];
+    const yA = Math.max(yM - 110, ys[ys.length - 2] + 24);
+    const curve = x => `M${x} ${yA} C${x} ${yA + 55} ${xC} ${yM - 55} ${xC} ${yM}`;
+    set(svg, { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
+    set(el.grad, { y1: yM, y2: H });
+    el.lanes.forEach((l, i) => { const x = i ? xN : xZ; set(l, { x1: x, x2: x, y1: 0 }); });
+    set(el.cz, { d: curve(xZ) });
+    set(el.cn, { d: curve(xN) });
+    set(el.trunk, { d: `M${xC} ${yM} V${H}` });
+    el.nodes.forEach((n, i) => set(n, { cx: commits[i].dataset.lane === 'niku' ? xN : xZ, cy: ys[i] }));
+    el.tips.forEach((t, i) => set(t, { cx: i ? xN : xZ, cy: yA }));
+    set(el.ghost, { cx: xC, cy: yM });
+    set(el.mpos, { transform: `translate(${xC} ${yM})` });
+    G = { ys, yA };
+    draw();
+  }
+  function draw() {
+    if (!G) return;
+    // the "pen" sits ~62% down the viewport; everything above it is drawn
+    const d = reduce || merged ? Infinity : innerHeight * 0.62 - log.getBoundingClientRect().top;
+    const y = Math.max(0, Math.min(d, G.yA));
+    el.lanes.forEach(l => l.setAttribute('y2', y));
+    el.nodes.forEach((n, i) => n.classList.toggle('on', d >= G.ys[i] - 2));
+    el.tips.forEach(t => t.classList.toggle('on', d >= G.yA));
+  }
+  let raf = 0;
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; draw(); }); }, { passive: true });
+  addEventListener('resize', draw, { passive: true });
+  new ResizeObserver(layout).observe(log);
+  if (document.fonts) document.fonts.ready.then(layout);
+  layout();
+
+  /* ---------- stanza 2: the build Zuka breaks ---------- */
+  const buildBtn = $('#build-btn'), badge = $('#badge'), ciDetail = $('#ci-detail');
+  const fails = [
+    'Zuka committed node_modules (all 48,213 files)',
+    'Zuka renamed main to “mine”',
+    'Zuka force-pushed on a Friday',
+    'Zuka fixed a typo. In 400 files.',
+    'Zuka deleted the tests so they’d pass',
+    'Zuka shipped “TODO: ask Nikusha”',
+    'Zuka merged without pulling. Again.',
+  ];
+  let broken = 0, fi = Math.floor(Math.random() * fails.length);
+  function setBadge(state, label, detail) {
+    badge.className = 'badge ' + state;
+    badge.textContent = '';
+    if (state === 'run') badge.appendChild(Object.assign(document.createElement('i'), { className: 'spin' }));
+    badge.append((state === 'bad' ? '✗ ' : state === 'ok' ? '✓ ' : '') + label);
+    ciDetail.textContent = detail;
+  }
+  buildBtn.addEventListener('click', async () => {
+    buildBtn.disabled = true;
+    setBadge('run', 'building…', '$ make friendship');
+    await wait(1000);
+    broken++;
+    setBadge('bad', 'build failing', 'cause: ' + fails[fi++ % fails.length]);
+    await wait(1800);
+    setBadge('run', 'Nikusha is on it…', 'git commit -m "fix: whatever Zuka did"');
+    await wait(1100);
+    setBadge('ok', 'build passing', `broken by Zuka: ${broken} · fixed by Nikusha: ${broken} · bugs left behind: 0`);
+    burst(...centerOf(badge), palettes.niku(), 16, 1.2);
+    addLove(1);
+    buildBtn.innerHTML = '<span aria-hidden="true">↻</span> break it again';
+    buildBtn.disabled = false;
+  });
+
+  /* ---------- stanza 3: view as .txt ---------- */
+  const raw = $('#raw'), rawClose = $('#raw-close'), txtToggle = $('#txt-toggle');
+  $('#raw-pre').textContent = $('#poem-src').textContent.replace(/^\n/, '');
+  function openRaw() {
+    rawOpen = true;
+    raw.hidden = false;
+    raw.scrollTop = 0;
+    document.body.classList.add('raw-open');
+    txtToggle.checked = true;
+    rawClose.focus();
+  }
+  function closeRaw() {
+    rawOpen = false;
+    raw.hidden = true;
+    document.body.classList.remove('raw-open');
+    txtToggle.checked = false;
+    txtToggle.focus({ preventScroll: true });
+    toast('style restored ✨');
+  }
+  txtToggle.addEventListener('change', () => (txtToggle.checked ? openRaw() : closeRaw()));
+  rawClose.addEventListener('click', closeRaw);
+
+  /* ---------- stanza 4: push, get rejected, merge ---------- */
+  const term = $('#term'), pushBtn = $('#push-btn'), finale = $('#finale');
+  let prompt = null, stage = 0, busy = false;
+  function newPrompt() {
+    prompt = document.createElement('span');
+    prompt.innerHTML = '<span class="ps">~/sts-playground $</span> <span class="cmd"></span><span class="tcur"></span>';
+    term.appendChild(prompt);
+    term.scrollTop = term.scrollHeight;
+  }
+  async function typeCmd(cmd) {
+    const c = prompt.querySelector('.cmd');
+    if (reduce) c.textContent = cmd; // no typing animation for reduced-motion users
+    else for (const ch of cmd) { c.textContent += ch; await wait(35 + Math.random() * 45); }
+    await wait(250);
+    prompt.querySelector('.tcur').remove();
+    term.append('\n');
+  }
+  async function out(lines) {
+    for (const [text, cls] of lines) {
+      const s = document.createElement('span');
+      if (cls) s.className = cls;
+      s.textContent = text + '\n';
+      term.appendChild(s);
+      term.scrollTop = term.scrollHeight;
+      await wait(reduce ? 60 : 240);
+    }
+    newPrompt();
+  }
+  newPrompt();
+  pushBtn.addEventListener('click', async () => {
+    if (busy) return;
+    busy = true; pushBtn.disabled = true;
+    if (stage === 0) {
+      await typeCmd('git push origin love');
+      await out([
+        ['Enumerating objects: 4 stanzas, done.'],
+        ['Counting heartbeats: 100% (∞/∞), done.'],
+        ['Writing objects: 100% (♥ KiB | ∞ MiB/s), done.'],
+        ['To github.com:STS-Labs/STS-Playground.git', 'dim'],
+        [' ! [rejected]   love -> main (too big for any branch)', 'err'],
+        ['hint: no branch could hold the love for you.', 'hint'],
+        ['hint: maybe try merging instead?', 'hint'],
+      ]);
+      stage = 1;
+      pushBtn.innerHTML = 'git merge nikusha <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#heart"/></svg>';
+      pushBtn.classList.add('glow');
+    } else if (stage === 1) {
+      pushBtn.classList.remove('glow');
+      await typeCmd('git merge nikusha');
+      await out([
+        ["Merge made by the 'heart' strategy.", 'ok'],
+        [' zuka-loves-nikusha.txt | ∞ ++++++++++++++++++++++', 'ok'],
+        [' 1 friendship changed, ∞ insertions(+), 0 deletions(-)'],
+        ['0 conflicts. Forever. ♥', 'ok'],
+      ]);
+      stage = 2;
+      mergeIt();
+      pushBtn.textContent = 'celebrate again ♥';
+    } else {
+      rain(palettes.all(), 70);
+    }
+    busy = false; pushBtn.disabled = false;
+  });
+  function mergeIt() {
+    merged = true;
+    document.body.classList.add('merged');
+    draw();
+    infinite = true;
+    countEl.textContent = '∞';
+    $('#review').innerHTML = 'Reviewed-by: <b>Nikusha</b> ✓ approved';
+    rain(palettes.all(), reduce ? 24 : 110);
+    setTimeout(() => { const m = $('.mnode', svg); if (m) burst(...centerOf(m), palettes.all(), 26, 1.6); }, reduce ? 0 : 950);
+    finale.hidden = false;
+    requestAnimationFrame(() => finale.classList.add('show'));
+    toast('merged into forever ♥');
+  }
+  $('#again').addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+
+  /* ---------- keyboard easter eggs ---------- */
+  let buf = '';
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape' && rawOpen) { closeRaw(); return; }
+    if (rawOpen || e.ctrlKey || e.metaKey || e.altKey || e.key.length !== 1) return;
+    buf = (buf + e.key.toLowerCase()).slice(-12);
+    if (buf.endsWith('nikusha')) { rain(palettes.niku(), 70); addLove(7); toast('n · i · k · u · s · h · a ♥'); buf = ''; }
+    else if (buf.endsWith('zuka')) { rain(palettes.zuka(), 50); addLove(4); toast('z · u · k · a says hi'); buf = ''; }
+  });
+})();
+</script>
+</body>
+</html>
